@@ -2,12 +2,14 @@
   "name": "mocks",
   "version": "1.0.0",
   "description": "",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "faker": "^5.5.3",
     "json-server": "^0.17.4",
     "nodemon": "^3.1.1"
   }

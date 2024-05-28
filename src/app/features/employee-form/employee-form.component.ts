@@ -1,6 +1,7 @@
 // employee-form.component.ts
 import { Component, Input, input, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { TYPE_IDENTIFICATION, CIVIL_STATUS } from '@core/constants/options';
 import { Employee, Positions } from 'app/core/models/employee.model';
 import { EmployeeService } from 'app/core/services/employee.service';
@@ -13,29 +14,28 @@ import { Observable } from 'rxjs';
   styleUrls: ['./employee-form.component.scss'],
 })
 export class EmployeeFormComponent implements OnInit{
-  @Input() id!: string;;
 
   employeeForm!: FormGroup;
   civilStatusOptions = CIVIL_STATUS;
   typeIdentificationOptions = TYPE_IDENTIFICATION;
 
+  private route = inject(ActivatedRoute);
   private fb= inject(FormBuilder);
   private employeeService = inject(EmployeeService);
   private positionService = inject(PositonService);
-  private changeDetectorRef = inject(ChangeDetectorRef);
 
   positions$ = this.positionService.getPositions();
 
   ngOnInit(): void {
     this.initEmployeeForm();
-    if (this.id) {
-      console.log(this.id);
-      this.getEmployeeServiceValue(this.id).subscribe((employee) => {
-        this.employeeForm.patchValue(employee);
-        this.changeDetectorRef.detectChanges();
-        console.log(employee);
-      });
-    }
+    this.route.params.subscribe(({id}) => {
+      if (id) {
+        this.getEmployeeServiceValue(id).subscribe((employee) => {
+          this.employeeForm.patchValue(employee);
+          console.log(employee);
+        });
+      }
+    });
   }
 
   getEmployeeServiceValue(id: string = ''): Observable<Employee> {

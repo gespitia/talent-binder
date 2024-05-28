@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,7 +11,7 @@ import { EmployeeService } from '@core/services/employee.service';
   templateUrl: './employees-list.component.html',
   styleUrls: ['./employees-list.component.scss'],
 })
-export class EmployeesListComponent {
+export class EmployeesListComponent implements AfterViewInit{
   displayedColumns: string[] = ['firstName', 'lastName', 'position', 'actions'];
   dataSource!: MatTableDataSource<Employee>;
 
@@ -24,6 +24,10 @@ export class EmployeesListComponent {
   ) {}
 
   ngAfterViewInit() {
+    this.getEmployeesTable();
+  }
+
+  getEmployeesTable() {
     this.employeeService.getEmployees().subscribe((employees: Employee[]) => {
       this.dataSource = new MatTableDataSource(employees);
       this.dataSource.paginator = this.paginator;
@@ -42,6 +46,8 @@ export class EmployeesListComponent {
   }
 
   deleteEmployee(id:string) {
-    this.employeeService.deleteEmployee(id).subscribe(() => {});
+    this.employeeService.deleteEmployee(id).subscribe(() => {
+      this.getEmployeesTable();
+    });
   }
 }
