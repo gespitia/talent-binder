@@ -1,0 +1,26 @@
+:host{
+  display: block;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.footer-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap-reverse;
+  margin-top: 10px;
+}
+
+.footer-controls > a {
+  margin-right: auto; /* Empuja el botón hacia la izquierda */
+}

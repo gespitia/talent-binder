@@ -1,0 +1,27 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" position="end">
+    <!-- Contenido del menú hamburguesa -->
+    <mat-nav-list class="item-haburguer">
+      <a mat-list-item [routerLink]="">Home</a>
+      <a mat-list-item [routerLink]="">Item 2</a>
+      <!-- más items -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button class="button" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <!-- Contenido del menú horizontal -->
+      <span>Logo</span>
+
+      <span class="spacer"></span>
+      <div class="menu-items">
+        <a mat-button [routerLink]="">Home</a>
+        <a mat-button [routerLink]="">Item 2</a>
+        <!-- más items -->
+      </div>
+    </mat-toolbar>
+    <ng-content select="router-outlet"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

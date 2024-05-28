@@ -1,0 +1,152 @@
+<!-- employee-form.component.html -->
+<div class="employee-form-container">
+  <form
+    [formGroup]="employeeForm"
+    (ngSubmit)="onSubmit()"
+    class="employee-form"
+  >
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Detalles del Empleado</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Tipo de Identificación</mat-label>
+            <mat-select formControlName="identificationType">
+              @for(option of typeIdentificationOptions; track option.value){
+              <mat-option value="{{ option.value }}">
+                {{ option.label }}
+              </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Número de Identificación</mat-label>
+            <input matInput formControlName="identificationNumber" appOnlyNumbers/>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field" appOnlyLetters>
+            <mat-label>Nombres</mat-label>
+            <input matInput formControlName="firstName" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field" appOnlyLetters>
+            <mat-label>Apellidos</mat-label>
+            <input matInput formControlName="lastName" />
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput formControlName="email" type="email" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Número de Teléfono</mat-label>
+            <input matInput formControlName="phoneNumber" type="tel" appOnlyNumbers />
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field class="form-field">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input
+              matInput
+              [matDatepicker]="dateOfBirthDatePicker"
+              formControlName="dateOfBirth"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="dateOfBirthDatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #dateOfBirthDatePicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>
+                  Apply
+                </button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field class="form-field">
+            <mat-label>Fecha de Contratación</mat-label>
+            <input
+              matInput
+              [matDatepicker]="hireOfDatePicker"
+              formControlName="hireOfDate"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="hireOfDatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #hireOfDatePicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>
+                  Apply
+                </button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Salario</mat-label>
+            <input matInput formControlName="salary" type="number" appOnlyNumbers/>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Departamento</mat-label>
+            <input matInput formControlName="department" appOnlyLetters/>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Posición</mat-label>
+            <mat-select>
+              <mat-option value="developer">Desarrollador</mat-option>
+              <mat-option value="designer">Diseñador</mat-option>
+              <mat-option value="manager">Gerente</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Estado civil</mat-label>
+            <mat-select formControlName="civilStatus">
+              @for(option of civilStatusOptions; track option.value){
+              <mat-option value="{{ option.value }}">
+                {{ option.label }}
+              </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions class="actions-buttons">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!employeeForm.valid"
+        >
+          Enviar
+        </button>
+        <button mat-stroked-button color="accent" (click)="onCancel()">
+          Cancelar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

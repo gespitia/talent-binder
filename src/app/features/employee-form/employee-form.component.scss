@@ -1,0 +1,27 @@
+/* employee-form.component.scss */
+.employee-form-container {
+  max-width: 90%;
+  margin: 20px auto;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.form-field {
+  flex: 0 0 calc(50% - 8px); /* Ajusta el espaciado según sea necesario */
+}
+
+/* Estilos para campos más cortos si es necesario */
+.form-field-short {
+  flex: 0 0 calc(33% - 8px); /* Ajusta para 3 campos por fila */
+}
+
+.actions-buttons{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}

@@ -1,0 +1,30 @@
+.mat-sidenav-container{
+  background-color: darkslategrey;
+}
+
+.item-haburguer{
+  position: fixed;
+  right: 0;
+  background-color: black;
+}
+
+.menu-items {
+  display: flex;
+}
+
+.button {
+  display: none;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 600px) {
+  .button {
+    display: block;
+  }
+  .menu-items {
+    display: none;
+  }
+}
