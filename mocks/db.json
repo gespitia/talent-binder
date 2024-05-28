@@ -1,6 +1,25 @@
 {
   "employees": [
     {
+      "id": 1,
+      "firstName": "Juan",
+      "lastName": "Pérez",
+      "position": "Desarrollador Frontend",
+      "dateOfBirth": "1990-05-14",
+      "hireOfDate": "2018-06-01",
+      "salary": 4500000,
+      "department": "Desarrollo",
+      "email": "juan.perez@empresa.com",
+      "phoneNumber": "3001234567",
+      "address": "Calle 123 #45-67",
+      "identificationType": "CC",
+      "identificationNumber": "123456789",
+      "civilStatus": "Casado",
+      "children": true,
+      "numberOfChildren": 2,
+      "sex": "Masculino"
+    },
+    {
       "id": 3,
       "firstName": "María",
       "lastName": "Gómez",
