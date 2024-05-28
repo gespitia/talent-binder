@@ -63,7 +63,7 @@ Si estás interesado en contribuir a TalentBinder, por favor consulta nuestro do
 TalentBinder se distribuye bajo la Licencia MIT. Consulta el archivo LICENSE.md para obtener más información.
 
 # Contacto
-Para cualquier consulta o sugerencia, no dudes en contactarnos a través de tu-email@dominio.com.
+Para cualquier consulta o sugerencia, no dudes en contactarnos a través de gustavoenriqueespitiamelendez@gmail.com
 
 Desarrollado con pasión y dedicación por Gustavo Espitia - © 2024
 
