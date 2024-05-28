@@ -1,42 +1,35 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Employee } from '@core/models/employee.model';
+import { EmployeeService } from '@core/services/employee.service';
 
 // employee.model.ts
-export interface Employee {
-  id: number;
-  firstName: string;
-  lastName: string;
-  position: string;
-  dateOfBirth: string;
-}
-
 @Component({
   selector: 'app-employees-list',
   templateUrl: './employees-list.component.html',
-  styleUrls: ['./employees-list.component.scss']
+  styleUrls: ['./employees-list.component.scss'],
 })
-
 export class EmployeesListComponent {
   displayedColumns: string[] = ['firstName', 'lastName', 'position', 'actions'];
-  dataSource: MatTableDataSource<Employee>;
+  dataSource!: MatTableDataSource<Employee>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private router: Router) {
-    // Crear 50 empleados falsos
-    const employees = Array.from({length: 50}, (_, k) => createFakeEmployee(k + 1));
-
-    // Asignar los datos a la fuente de datos para que la tabla los renderice
-    this.dataSource = new MatTableDataSource(employees);
-  }
+  constructor(
+    private employeeService: EmployeeService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.employeeService.getEmployees().subscribe((employees: Employee[]) => {
+      this.dataSource = new MatTableDataSource(employees);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.changeDetectorRef.detectChanges(); // Forzar la detección de cambios
+    });
   }
 
   applyFilter(event: Event) {
@@ -48,28 +41,7 @@ export class EmployeesListComponent {
     }
   }
 
-  editEmployee(employee: Employee) {
-    // Lógica para editar el empleado
+  deleteEmployee(id:string) {
+    this.employeeService.deleteEmployee(id).subscribe(() => {});
   }
-
-  deleteEmployee(employee: Employee) {
-    // Lógica para eliminar el empleado
-  }
-
-  createEmployee() {
-    // Lógica para crear un empleado
-    this.router.navigate(['/employees/create']);
-  }
-
-}
-
-// Función para crear un empleado falso
-function createFakeEmployee(id: number): Employee {
-  return {
-    id: id,
-    firstName: `Nombre${id}`,
-    lastName: `Apellido${id}`,
-    position: `Puesto${id % 10}`, // Suponiendo 10 puestos diferentes
-    dateOfBirth: `1990-01-0${id}`, // Suponiendo 10 días diferentes
-  };
 }

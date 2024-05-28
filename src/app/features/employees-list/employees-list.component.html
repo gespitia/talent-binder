@@ -27,8 +27,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let row">
-        <button mat-button (click)="editEmployee(row)">Edit</button>
-        <button mat-button (click)="deleteEmployee(row)">Delete</button>
+        <a mat-button [routerLink]="['/employees/edit-employee', row.id]">Edit</a>
+        <button mat-button (click)="deleteEmployee(row.id)">Delete</button>
       </td>
     </ng-container>
 
@@ -44,7 +44,7 @@
   </table>
 
   <div class="footer-controls">
-    <a mat-raised-button color="primary" routerLink="/create-employee">
+    <a mat-raised-button color="primary" routerLink="/employees/create-employee">
       Create Employee
     </a>
     <mat-paginator
