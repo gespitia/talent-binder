@@ -1,27 +1,77 @@
 # TalentBinder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
+## Descripción
 
-## Development server
+TalentBinder es una aplicación web moderna y sofisticada desarrollada con Angular 18, diseñada para facilitar la gestión integral del talento dentro de las organizaciones. Esta herramienta permite a los usuarios realizar un seguimiento eficiente de los empleados, desde la contratación hasta la baja, pasando por la modificación de datos personales y profesionales.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Características Principales
 
-## Code scaffolding
+- **Visualización Completa**: Muestra un listado completo de todos los empleados en la organización.
+- **Búsqueda Avanzada**: Permite buscar empleados específicos por nombre.
+- **Registro y Contratación**: Facilita la incorporación de nuevos empleados, con un formulario que incluye selección de puesto desde una lista obtenida de una API externa.
+- **Edición de Datos**: Ofrece la posibilidad de modificar la información personal y profesional de los empleados.
+- **Gestión de Bajas**: Permite a los empleados registrados darse de baja de la empresa.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologías Utilizadas
 
-## Build
+- Angular 18
+- TypeScript
+- RxJS
+- Angular Material
+- API Restful
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalación
 
-## Running unit tests
+Para instalar y ejecutar TalentBinder en tu entorno local, sigue estos pasos:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clona el repositorio:
+   ```sh
+   git clone https://github.com/tu-usuario/TalentBinder.git
 
-## Running end-to-end tests
+2. Navega al directorio del proyecto:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  cd TalentBinder
 
-## Further help
+3. Instala las dependencias necesarias
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    npm install
+
+4. Ejecuta la aplicación
+
+    ng serve
+
+5. Abre tu navegador y dirígete a http://localhost:4200 para comenzar a utilizar TalentBinder.
+
+# Pruebas
+
+Para ejecutar las pruebas unitarias y asegurar la calidad del código, utiliza el comando:
+
+ng test
+
+# Construcción y Despliegue
+Para construir la aplicación para un entorno de producción, ejecuta:
+
+ng build --prod
+
+Los archivos resultantes estarán disponibles en el directorio dist/.
+
+# Contribuciones
+
+Si estás interesado en contribuir a TalentBinder, por favor consulta nuestro documento CONTRIBUTING.md para más detalles sobre cómo puedes participar en el proyecto.
+
+# Licencia
+TalentBinder se distribuye bajo la Licencia MIT. Consulta el archivo LICENSE.md para obtener más información.
+
+# Contacto
+Para cualquier consulta o sugerencia, no dudes en contactarnos a través de tu-email@dominio.com.
+
+Desarrollado con pasión y dedicación por Gustavo Espitia - © 2024
+
+
+Este `README.md` proporciona una visión general clara y profesional de la aplicación, junto con instrucciones detalladas para la instalación, uso, pruebas y contribución. Asegúrate de personalizar el contenido con tu información específica, como el enlace al repositorio de GitHub, tu dirección de correo electrónico y tus datos de contacto.
+
+Si necesitas más ayuda o tienes preguntas adicionales, estaré aquí para asistirte. 😊
+
+
+
+

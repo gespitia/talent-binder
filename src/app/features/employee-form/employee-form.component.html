@@ -115,9 +115,11 @@
           <mat-form-field appearance="outline" class="form-field">
             <mat-label>Posición</mat-label>
             <mat-select>
-              <mat-option value="developer">Desarrollador</mat-option>
-              <mat-option value="designer">Diseñador</mat-option>
-              <mat-option value="manager">Gerente</mat-option>
+              @for(position of positions; track $index){
+              <mat-option value="{{ position }}">
+                {{ position }}
+              </mat-option>
+              }
             </mat-select>
           </mat-form-field>
 

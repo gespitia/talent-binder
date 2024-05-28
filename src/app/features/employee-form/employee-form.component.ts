@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TYPE_IDENTIFICATION, CIVIL_STATUS } from '@core/constants/options'
+import { Positions } from 'app/core/models/employee.model';
 import { PositonService } from 'app/core/services/positon.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class EmployeeFormComponent {
   civilStatusOptions= CIVIL_STATUS;
   typeIdentificationOptions = TYPE_IDENTIFICATION;
 
-  positions = this.positionService.getPositions().subscribe(positions => console.log(positions));
+  positions: string[] = [];
 
   constructor(private fb: FormBuilder, public positionService: PositonService) {
     this.employeeForm = this.fb.group({
@@ -36,6 +37,10 @@ export class EmployeeFormComponent {
       children: [false],
       numberOfChildren: [{ value: 0, disabled: true }],
       sex: ['', [Validators.required]]
+    });
+
+    this.positionService.getPositions().subscribe((data: Positions) => {
+      this.positions = data.positions;
     });
   }
 
