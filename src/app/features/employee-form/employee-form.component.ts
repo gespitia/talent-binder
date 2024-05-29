@@ -1,12 +1,12 @@
 // employee-form.component.ts
 import { Component, OnInit, inject } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { TYPE_IDENTIFICATION, CIVIL_STATUS } from '@core/constants/options';
 import { Employee, Positions } from 'app/core/models/employee.model';
 import { EmployeeService } from 'app/core/services/employee.service';
 import { PositonService } from 'app/core/services/positon.service';
-import { get } from 'http';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -23,6 +23,7 @@ export class EmployeeFormComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private employeeService = inject(EmployeeService);
   private positionService = inject(PositonService);
+  private _snackBar= inject(MatSnackBar);
 
   positions: string[] = [];
 
@@ -81,14 +82,22 @@ export class EmployeeFormComponent implements OnInit {
           .updateEmployee(this.employeeForm.value)
           .subscribe((employee) => {
             console.log(employee);
+            this.openSnackBar('Employee updated', 'Close');
           });
       } else {
         this.employeeService
           .addEmployee(this.employeeForm.value)
           .subscribe((employee) => {
             console.log(employee);
+            this.openSnackBar('Employee added', 'Created');
           });
       }
     }
+    this.employeeForm.reset();
   }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
 }
