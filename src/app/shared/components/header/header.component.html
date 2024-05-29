@@ -1,8 +1,8 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="over" position="end">
     <mat-nav-list class="item-haburguer">
-      <a mat-list-item [routerLink]="">Home</a>
-      <a mat-list-item [routerLink]="">Item 2</a>
+      <a mat-list-item routerLink="/employees/home">Home</a>
+      <a mat-list-item href="https://unow.es/home">Salir</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -14,7 +14,7 @@
       <span class="spacer"></span>
       <div class="menu-items">
         <a mat-button routerLink="/employees/home">Home</a>
-        <a mat-button href="www.google.com">Item 2</a>
+        <a mat-button href="https://unow.es/home">Salir</a>
       </div>
     </mat-toolbar>
     <ng-content select="router-outlet"></ng-content>

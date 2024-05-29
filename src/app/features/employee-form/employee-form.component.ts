@@ -1,10 +1,9 @@
-// employee-form.component.ts
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { TYPE_IDENTIFICATION, CIVIL_STATUS } from '@core/constants/options';
-import { Employee, Positions } from 'app/core/models/employee.model';
+import { Employee } from 'app/core/models/employee.model';
 import { EmployeeService } from 'app/core/services/employee.service';
 import { PositonService } from 'app/core/services/positon.service';
 import { Observable } from 'rxjs';
@@ -14,7 +13,7 @@ import { Observable } from 'rxjs';
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.scss'],
 })
-export class EmployeeFormComponent implements OnInit {
+export class EmployeeFormComponent implements OnInit, OnDestroy {
   employeeForm!: FormGroup;
 
   civilStatusOptions = CIVIL_STATUS;
@@ -73,23 +72,19 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.employeeForm.valid);
-    console.log(this.employeeForm.value);
     if (this.employeeForm.valid) {
       console.log(this.employeeForm.value);
       if (this.employeeForm.value.id) {
         this.employeeService
           .updateEmployee(this.employeeForm.value)
           .subscribe((employee) => {
-            console.log(employee);
             this.openSnackBar('Employee updated', 'Close');
           });
       } else {
         this.employeeService
           .addEmployee(this.employeeForm.value)
           .subscribe((employee) => {
-            console.log(employee);
-            this.openSnackBar('Employee added', 'Created');
+            this.openSnackBar('Employee added', 'Close');
           });
       }
     }
@@ -98,6 +93,11 @@ export class EmployeeFormComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
+  }
+
+  ngOnDestroy(): void {
+    this.employeeForm.reset();
+    this._snackBar.dismiss();
   }
 
 }
