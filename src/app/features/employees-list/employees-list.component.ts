@@ -5,7 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Employee } from '@core/models/employee.model';
 import { EmployeeService } from '@core/services/employee.service';
 
-// employee.model.ts
 @Component({
   selector: 'app-employees-list',
   templateUrl: './employees-list.component.html',
@@ -32,7 +31,7 @@ export class EmployeesListComponent implements AfterViewInit{
       this.dataSource = new MatTableDataSource(employees);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.changeDetectorRef.detectChanges(); // Forzar la detección de cambios
+      this.changeDetectorRef.detectChanges();
     });
   }
 
