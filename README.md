@@ -24,21 +24,25 @@ TalentBinder es una aplicación web moderna y sofisticada desarrollada con Angul
 
 Para instalar y ejecutar TalentBinder en tu entorno local, sigue estos pasos:
 
-1. Clona el repositorio:
+1. **Clona el repositorio:**
    ```sh
    git clone https://github.com/tu-usuario/TalentBinder.git
 
-2. Navega al directorio del proyecto:
+2. **Navega al directorio del proyecto:**
 
   cd TalentBinder
 
-3. Instala las dependencias necesarias
+3. **Instala las dependencias necesarias**
 
     npm install
 
-4. Ejecuta la aplicación
+4. **Ejecuta la aplicación**
 
     ng serve
+
+5. **Ejcuta el mock para producir Datos Fake**
+
+    npm run start-mocks
 
 5. Abre tu navegador y dirígete a http://localhost:4200 para comenzar a utilizar TalentBinder.
 
