@@ -11,7 +11,7 @@ import { EmployeeService } from '@core/services/employee.service';
   styleUrls: ['./employees-list.component.scss'],
 })
 export class EmployeesListComponent implements AfterViewInit{
-  displayedColumns: string[] = ['firstName', 'lastName', 'position', 'actions'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'address', 'position', 'actions'];
   dataSource!: MatTableDataSource<Employee>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
