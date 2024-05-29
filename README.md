@@ -18,7 +18,8 @@ TalentBinder es una aplicación web moderna y sofisticada desarrollada con Angul
 - TypeScript
 - RxJS
 - Angular Material
-- API Restful
+- API 
+- Node Version 20.11.1
 
 ## Instalación
 
