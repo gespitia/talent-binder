@@ -158,13 +158,12 @@
         <div class="form-row">
           <mat-form-field appearance="outline" class="form-field">
             <mat-label>Posición</mat-label>
-            <mat-select>
-              @if(positions$ | async; as items){ @for (item of items.positions;
-              track item){
-              <mat-option value="{{ item }}">
-                {{ item }}
+            <mat-select formControlName="position">
+            @for (position of positions; track $index){
+              <mat-option value="{{ position }}">
+                {{ position }}
               </mat-option>
-              } }
+              }
             </mat-select>
           </mat-form-field>
 
@@ -179,6 +178,14 @@
             </mat-select>
           </mat-form-field>
         </div>
+
+        <section class="example-section">
+          <label class="example-margin">Sexo:</label>
+          <mat-radio-group formControlName="sex">
+            <mat-radio-button class="example-margin" value="masculino">Masculino</mat-radio-button>
+            <mat-radio-button class="example-margin" value="femenino">Femenino</mat-radio-button>
+          </mat-radio-group>
+        </section>
       </mat-card-content>
 
       <mat-card-actions class="actions-buttons">
@@ -186,7 +193,7 @@
           mat-raised-button
           color="primary"
           type="submit"
-          [disabled]="!employeeForm.valid"
+          [disabled]="employeeForm.invalid || employeeForm.pristine"
         >
           Enviar
         </button>

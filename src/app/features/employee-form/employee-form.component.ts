@@ -1,11 +1,12 @@
 // employee-form.component.ts
-import { Component, Input, input, OnInit, inject, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TYPE_IDENTIFICATION, CIVIL_STATUS } from '@core/constants/options';
-import { Employee } from 'app/core/models/employee.model';
+import { Employee, Positions } from 'app/core/models/employee.model';
 import { EmployeeService } from 'app/core/services/employee.service';
 import { PositonService } from 'app/core/services/positon.service';
+import { get } from 'http';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,28 +14,34 @@ import { Observable } from 'rxjs';
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.scss'],
 })
-export class EmployeeFormComponent implements OnInit{
-
+export class EmployeeFormComponent implements OnInit {
   employeeForm!: FormGroup;
+
   civilStatusOptions = CIVIL_STATUS;
   typeIdentificationOptions = TYPE_IDENTIFICATION;
 
   private route = inject(ActivatedRoute);
-  private fb= inject(FormBuilder);
   private employeeService = inject(EmployeeService);
   private positionService = inject(PositonService);
 
-  positions$ = this.positionService.getPositions();
+  positions: string[] = [];
 
   ngOnInit(): void {
     this.initEmployeeForm();
-    this.route.params.subscribe(({id}) => {
+    this.route.params.subscribe(({ id }) => {
+      this.setPositions();
       if (id) {
         this.getEmployeeServiceValue(id).subscribe((employee) => {
-          this.employeeForm.patchValue(employee);
+          this.employeeForm.patchValue(employee as any);
           console.log(employee);
         });
       }
+    });
+  }
+
+  setPositions(): void {
+    this.positionService.getPositions().subscribe((positions) => {
+      this.positions = positions.positions;
     });
   }
 
@@ -43,43 +50,45 @@ export class EmployeeFormComponent implements OnInit{
   }
 
   initEmployeeForm(): void {
-    this.employeeForm = this.fb.group({
-      id: [null], // Se manejará automáticamente o se ocultará si no es necesario para la creación
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      position: ['', [Validators.required]],
-      dateOfBirth: ['', [Validators.required]],
-      hireOfDate: ['', [Validators.required]],
-      salary: ['', [Validators.required]],
-      department: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      identificationType: ['', [Validators.required]],
-      identificationNumber: ['', [Validators.required]],
-      civilStatus: ['', [Validators.required]],
-      children: [false],
-      numberOfChildren: [0, Validators.min(0)],
-      sex: ['', [Validators.required]],
+    this.employeeForm = new FormGroup({
+      id: new FormControl(''),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      position: new FormControl('', Validators.required),
+      dateOfBirth: new FormControl('', Validators.required),
+      hireOfDate: new FormControl('', Validators.required),
+      salary: new FormControl('', Validators.required),
+      department: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      phoneNumber: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      identificationType: new FormControl('', Validators.required),
+      identificationNumber: new FormControl('', Validators.required),
+      civilStatus: new FormControl('', Validators.required),
+      children: new FormControl('', Validators.required),
+      numberOfChildren: new FormControl('', Validators.required),
+      sex: new FormControl('', Validators.required),
     });
   }
 
   onSubmit(): void {
+    console.log(this.employeeForm.valid);
+    console.log(this.employeeForm.value);
     if (this.employeeForm.valid) {
       console.log(this.employeeForm.value);
       if (this.employeeForm.value.id) {
-        // Aquí iría la lógica para actualizar un empleado
-        this.employeeService.updateEmployee(this.employeeForm.value).subscribe((employee) => {
-          console.log(employee);
-        });
+        this.employeeService
+          .updateEmployee(this.employeeForm.value)
+          .subscribe((employee) => {
+            console.log(employee);
+          });
       } else {
-        this.employeeService.addEmployee(this.employeeForm.value).subscribe((employee) => {
-          console.log(employee);
-        });
+        this.employeeService
+          .addEmployee(this.employeeForm.value)
+          .subscribe((employee) => {
+            console.log(employee);
+          });
       }
-      // Aquí iría la lógica para procesar los datos del formulario
     }
   }
-
-
 }
