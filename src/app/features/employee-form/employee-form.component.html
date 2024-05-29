@@ -36,7 +36,7 @@
             @if(employeeForm.get('identificationNumber')?.hasError('required')){
             <mat-error>Número de identificación es obligatorio</mat-error>
             }
-            @if(employeeForm.get('identificationNumber')?.hasError('maxlength')&&
+            @if(employeeForm.get('identificationNumber')?.hasError('maxlength')||
             employeeForm.get('identificationNumber')?.hasError('minlength')){
             <mat-error>El número de identificación debe ser un número de 10 digitos</mat-error>
             }
@@ -91,7 +91,7 @@
             />
             @if(employeeForm.get('phoneNumber')?.hasError('required')){
             <mat-error>El número de teléfono es requerido</mat-error>
-            } @if(employeeForm.get('phoneNumber')?.hasError('maxlength')&&
+            } @if(employeeForm.get('phoneNumber')?.hasError('maxlength')||
             employeeForm.get('phoneNumber')?.hasError('minlength')){
             <mat-error>El número de teléfono debe ser de 10 digitos</mat-error>
             }
@@ -222,6 +222,9 @@
               </mat-option>
               }
             </mat-select>
+            @if(employeeForm.get('civilStatus')?.hasError('required')){
+            <mat-error>El estado civil es requerido</mat-error>
+            }
           </mat-form-field>
         </div>
 
@@ -235,6 +238,9 @@
               >Femenino</mat-radio-button
             >
           </mat-radio-group>
+          @if (employeeForm.get('sex')?.hasError('reuired')) {
+          <mat-error>El sexo es requerido</mat-error>
+          }
         </section>
       </mat-card-content>
 
