@@ -41,7 +41,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCheckboxModule,
     MatRadioModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   exports: [
     MatButtonModule,

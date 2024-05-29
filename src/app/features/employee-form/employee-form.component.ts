@@ -29,10 +29,12 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initEmployeeForm();
     this.route.params.subscribe(({ id }) => {
+      console.log(id);
       this.setPositions();
       if (id) {
         this.getEmployeeServiceValue(id).subscribe((employee) => {
           this.employeeForm.patchValue(employee as any);
+          console.log(employee);
         });
       }
     });
@@ -69,7 +71,11 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
       ]),
       address: new FormControl('', Validators.required),
       identificationType: new FormControl('', Validators.required),
-      identificationNumber: new FormControl('', Validators.required),
+      identificationNumber: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10),
+      ]),
       civilStatus: new FormControl('', Validators.required),
       children: new FormControl('', Validators.required),
       numberOfChildren: new FormControl('', Validators.required),
