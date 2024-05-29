@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:talent-binder": "node dist/talent-binder/server/server.mjs",
-    "start-mocks":"cd mocks && npm start"
+    "start-mocks":"cd mocks && npm start",
+    "postinstall": "cd mocks && npm install"
   },
   "private": true,
   "dependencies": {
