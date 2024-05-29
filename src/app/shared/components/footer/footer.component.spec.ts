@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -8,10 +9,11 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterComponent]
+      declarations: [FooterComponent],
+      imports: [BrowserAnimationsModule]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
