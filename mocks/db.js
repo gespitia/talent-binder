@@ -32,7 +32,11 @@ function generateEmployee(id) {
   const salary = getRandomInt(3500000, 6000000);
   const department = departments[getRandomInt(0, departments.length - 1)];
   const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}@empresa.com`;
-  const phoneNumber = faker.phone.phoneNumber();
+  let phoneNumber;
+  do {
+    phoneNumber = faker.phone.phoneNumber("##########").replace(/\D/g, "");
+  } while (phoneNumber.startsWith("0"));
+
   const address = faker.address.streetAddress() + " " + faker.address.city();
   const identificationType =
     identificationTypes[getRandomInt(0, civilStatuses.length - 1)];
