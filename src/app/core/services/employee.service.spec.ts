@@ -4,7 +4,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { EmployeeService } from './employee.service';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { Employee } from '@core/models/employee.model';
 
 describe('EmployeeService', () => {
