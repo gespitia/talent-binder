@@ -22,7 +22,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private employeeService = inject(EmployeeService);
   private positionService = inject(PositonService);
-  private _snackBar= inject(MatSnackBar);
+  private _snackBar = inject(MatSnackBar);
 
   positions: string[] = [];
 
@@ -33,7 +33,6 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
       if (id) {
         this.getEmployeeServiceValue(id).subscribe((employee) => {
           this.employeeForm.patchValue(employee as any);
-          console.log(employee);
         });
       }
     });
@@ -59,8 +58,15 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
       hireOfDate: new FormControl('', Validators.required),
       salary: new FormControl('', Validators.required),
       department: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', Validators.required),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/),
+      ]),
+      phoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10),
+      ]),
       address: new FormControl('', Validators.required),
       identificationType: new FormControl('', Validators.required),
       identificationNumber: new FormControl('', Validators.required),
@@ -99,5 +105,4 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
     this.employeeForm.reset();
     this._snackBar.dismiss();
   }
-
 }

@@ -6,6 +6,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MaterialModule } from './modules/material.module';
 import { OnlyNumbersDirective } from './directives/only-numbers.directive';
 import { OnlyLettersDirective } from './directives/only-letters.directive';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { OnlyLettersDirective } from './directives/only-letters.directive';
     HeaderComponent,
     FooterComponent,
     OnlyNumbersDirective,
-    OnlyLettersDirective
+    OnlyLettersDirective,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import { OnlyLettersDirective } from './directives/only-letters.directive';
     FooterComponent,
     OnlyNumbersDirective,
     OnlyLettersDirective,
-    MaterialModule
+    MaterialModule,
+    ConfirmDialogComponent
   ]
 })
 export class SharedModule { }
