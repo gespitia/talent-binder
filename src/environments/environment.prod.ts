@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'https://talent-binder-mock.onrender.com',
   apiPostitonsUrl: 'https://ibillboard.com/api/positions',
 };

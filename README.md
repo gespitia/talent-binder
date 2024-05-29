@@ -37,15 +37,16 @@ Para instalar y ejecutar TalentBinder en tu entorno local, sigue estos pasos:
 
     npm install
 
-4. **Ejecuta la aplicación**
-
-    ng serve
-
-5. **Ejcuta el mock para producir Datos Fake**
+    
+4. **Ejcuta el mock para producir Datos Fake**
 
     npm run start-mocks
 
-5. Abre tu navegador y dirígete a http://localhost:4200 para comenzar a utilizar TalentBinder.
+5. **Ejecuta la aplicación**
+
+    ng serve
+
+6. Abre tu navegador y dirígete a http://localhost:4200 para comenzar a utilizar TalentBinder.
 
 # Pruebas
 
