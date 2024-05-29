@@ -67,7 +67,7 @@ function generateEmployee(id) {
 }
 
 const employees = [];
-for (let i = 1; i <= 1000; i++) {
+for (let i = 1; i <= 85; i++) {
   employees.push(generateEmployee(i));
 }
 

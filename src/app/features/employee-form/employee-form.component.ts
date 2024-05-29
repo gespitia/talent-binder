@@ -3,7 +3,7 @@ import { Component, Input, input, OnInit, inject, ChangeDetectorRef } from '@ang
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TYPE_IDENTIFICATION, CIVIL_STATUS } from '@core/constants/options';
-import { Employee, Positions } from 'app/core/models/employee.model';
+import { Employee } from 'app/core/models/employee.model';
 import { EmployeeService } from 'app/core/services/employee.service';
 import { PositonService } from 'app/core/services/positon.service';
 import { Observable } from 'rxjs';
@@ -59,7 +59,7 @@ export class EmployeeFormComponent implements OnInit{
       identificationNumber: ['', [Validators.required]],
       civilStatus: ['', [Validators.required]],
       children: [false],
-      numberOfChildren: [{ value: 0, disabled: true }],
+      numberOfChildren: [0, Validators.min(0)],
       sex: ['', [Validators.required]],
     });
   }
@@ -67,11 +67,19 @@ export class EmployeeFormComponent implements OnInit{
   onSubmit(): void {
     if (this.employeeForm.valid) {
       console.log(this.employeeForm.value);
+      if (this.employeeForm.value.id) {
+        // Aquí iría la lógica para actualizar un empleado
+        this.employeeService.updateEmployee(this.employeeForm.value).subscribe((employee) => {
+          console.log(employee);
+        });
+      } else {
+        this.employeeService.addEmployee(this.employeeForm.value).subscribe((employee) => {
+          console.log(employee);
+        });
+      }
       // Aquí iría la lógica para procesar los datos del formulario
     }
   }
 
-  onCancel(): void {
-    // Lógica para manejar la cancelación del formulario
-  }
+
 }

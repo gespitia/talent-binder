@@ -11,6 +11,19 @@
   margin-bottom: 16px;
 }
 
+.form-row-address-children{
+  display: flex;
+  justify-content: normal;
+  gap: 5px;
+}
+
+.form-row-children{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
 .form-field {
   flex: 0 0 calc(50% - 8px); /* Ajusta el espaciado según sea necesario */
 }
