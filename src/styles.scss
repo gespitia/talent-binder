@@ -38,3 +38,33 @@ $talent-binder-theme: mat.define-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+:root {
+  --demo-bg: #0f1115;
+  --demo-paper: #171a20;
+  --demo-ink: #f2f3f1;
+  --demo-muted: #a5aca7;
+  --demo-line: #30353d;
+  --demo-accent: #8f86d8;
+}
+
+html,
+body {
+  background: var(--demo-bg);
+  color: var(--demo-ink);
+}
+
+[data-portfolio-theme='inherit'] {
+  --mat-sys-primary: var(--demo-accent);
+  --mat-sys-on-primary: #ffffff;
+  --mat-sys-primary-container: var(--demo-soft, var(--demo-paper));
+  --mat-sys-on-primary-container: var(--demo-ink);
+  --mat-sys-surface: var(--demo-paper);
+  --mat-sys-surface-container: var(--demo-paper);
+  --mat-sys-surface-container-high: var(--demo-paper);
+  --mat-sys-on-surface: var(--demo-ink);
+  --mat-sys-on-surface-variant: var(--demo-muted);
+  --mat-sys-outline: var(--demo-line);
+  --mat-sys-outline-variant: var(--demo-line);
+}
