@@ -55,10 +55,69 @@ body {
   color: var(--demo-ink);
 }
 
-[data-portfolio-theme='inherit'] {
+html[data-portfolio-theme='inherit'] {
+  --mat-app-background-color: var(--demo-bg);
+  --mat-app-text-color: var(--demo-ink);
+  --mat-ripple-color: color-mix(in srgb, var(--demo-ink) 12%, transparent);
+
+  --mdc-elevated-card-container-color: var(--demo-paper);
+  --mdc-outlined-card-container-color: var(--demo-paper);
+  --mdc-outlined-card-outline-color: var(--demo-line);
+  --mat-card-subtitle-text-color: var(--demo-muted);
+
+  --mdc-filled-text-field-container-color: var(--demo-paper);
+  --mdc-filled-text-field-input-text-color: var(--demo-ink);
+  --mdc-filled-text-field-label-text-color: var(--demo-muted);
+  --mdc-filled-text-field-hover-label-text-color: var(--demo-ink);
+  --mdc-filled-text-field-active-indicator-color: var(--demo-line);
+  --mdc-filled-text-field-hover-active-indicator-color: var(--demo-ink);
+  --mdc-filled-text-field-focus-active-indicator-color: var(--demo-accent);
+  --mdc-filled-text-field-focus-label-text-color: var(--demo-accent);
+
+  --mdc-outlined-text-field-input-text-color: var(--demo-ink);
+  --mdc-outlined-text-field-label-text-color: var(--demo-muted);
+  --mdc-outlined-text-field-hover-label-text-color: var(--demo-ink);
+  --mdc-outlined-text-field-outline-color: var(--demo-line);
+  --mdc-outlined-text-field-hover-outline-color: var(--demo-ink);
+  --mdc-outlined-text-field-focus-outline-color: var(--demo-accent);
+  --mdc-outlined-text-field-focus-label-text-color: var(--demo-accent);
+
+  --mat-select-enabled-trigger-text-color: var(--demo-ink);
+  --mat-select-placeholder-text-color: var(--demo-muted);
+  --mat-select-enabled-arrow-color: var(--demo-muted);
+  --mat-option-label-text-color: var(--demo-ink);
+
+  --mat-menu-container-color: var(--demo-paper);
+  --mat-menu-item-label-text-color: var(--demo-ink);
+  --mat-menu-item-icon-color: var(--demo-muted);
+  --mat-divider-color: var(--demo-line);
+
+  --mat-table-background-color: var(--demo-paper);
+  --mat-table-header-headline-color: var(--demo-ink);
+  --mat-table-row-item-label-text-color: var(--demo-ink);
+  --mat-table-row-item-outline-color: var(--demo-line);
+
+  --mat-toolbar-container-background-color: var(--demo-paper);
+  --mat-toolbar-container-text-color: var(--demo-ink);
+
+  --mat-sidenav-container-background-color: var(--demo-paper);
+  --mat-sidenav-container-text-color: var(--demo-ink);
+  --mat-sidenav-content-background-color: var(--demo-bg);
+  --mat-sidenav-content-text-color: var(--demo-ink);
+
+  --mdc-filled-button-container-color: var(--demo-accent);
+  --mdc-filled-button-label-text-color: #ffffff;
+  --mdc-outlined-button-label-text-color: var(--demo-accent);
+  --mdc-outlined-button-outline-color: var(--demo-line);
+  --mat-text-button-state-layer-color: var(--demo-accent);
+  --mdc-icon-button-icon-color: var(--demo-muted);
+
+  --mdc-linear-progress-active-indicator-color: var(--demo-accent);
+  --mdc-linear-progress-track-color: var(--demo-line);
+
   --mat-sys-primary: var(--demo-accent);
   --mat-sys-on-primary: #ffffff;
-  --mat-sys-primary-container: var(--demo-soft, var(--demo-paper));
+  --mat-sys-primary-container: var(--demo-paper);
   --mat-sys-on-primary-container: var(--demo-ink);
   --mat-sys-surface: var(--demo-paper);
   --mat-sys-surface-container: var(--demo-paper);
